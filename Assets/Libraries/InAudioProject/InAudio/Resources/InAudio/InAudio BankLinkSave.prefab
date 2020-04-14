@@ -1,0 +1,201 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1527004246318334}
+  m_IsPrefabAsset: 1
+--- !u!1 &1527004246318334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4275942980210866}
+  - component: {fileID: 114776373828932264}
+  - component: {fileID: 114244808781479658}
+  m_Layer: 0
+  m_Name: InAudio BankLinkSave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4275942980210866
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527004246318334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114244808781479658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527004246318334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a785e6fa4a5d2474e9612f1c2f69580d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 1855221138
+  _type: 1
+  _name: Default - Auto loaded
+  _parent: {fileID: 114776373828932264}
+  _children: []
+  _autoLoad: 1
+  _bankData:
+  - AudioNode: {fileID: 114301108415594106, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114197231549354006, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 0}
+    MusicNode: {fileID: 114672679702582372, guid: 82b25d7dbd84e4d25a4b8503fb847892,
+      type: 2}
+  - AudioNode: {fileID: 0}
+    MusicNode: {fileID: 114735225707903334, guid: 82b25d7dbd84e4d25a4b8503fb847892,
+      type: 2}
+  - AudioNode: {fileID: 0}
+    MusicNode: {fileID: 114795207949502228, guid: 82b25d7dbd84e4d25a4b8503fb847892,
+      type: 2}
+  - AudioNode: {fileID: 114736508691396170, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114274104522549258, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114838503218415270, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114846372280763358, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114492754869806462, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114800848428487624, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114847484004673564, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114097796209337634, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114681255638102038, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114863616470080152, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114146146201148326, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114277715723323134, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114316438554789778, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114869377217066366, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114212711415122008, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114420168159738178, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114075827576372210, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114187694820140344, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114633438866671490, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114360754500463188, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114302403192909614, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114797569785089872, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114859633845843332, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114071989457713478, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114074591767065250, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114670309072137770, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114261104325632202, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114446727630554892, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114040986621816484, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114463392921037244, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114208790308694940, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114687917896492666, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114300800338201372, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  - AudioNode: {fileID: 114826845022857760, guid: 71c8dcbb3afec4280ae819a171bbeaca,
+      type: 2}
+    MusicNode: {fileID: 0}
+  FoldedOut: 1
+  Filtered: 0
+--- !u!114 &114776373828932264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527004246318334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a785e6fa4a5d2474e9612f1c2f69580d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 1011513231
+  _type: 0
+  _name: Root
+  _parent: {fileID: 0}
+  _children:
+  - {fileID: 114244808781479658}
+  _autoLoad: 0
+  _bankData: []
+  FoldedOut: 1
+  Filtered: 0
