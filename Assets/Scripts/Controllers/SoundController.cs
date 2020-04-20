@@ -31,6 +31,15 @@ public class SoundController : MonoBehaviourSingleton<SoundController>
     }
 
 
+
+	public void StopSounds () {
+
+		InAudio.StopAll ();
+
+
+	}
+
+
 	public async void PlaySound (string name, int delay = 0, float volume = 1f) {
 
 		if (Sounds.ContainsKey (name)) {
