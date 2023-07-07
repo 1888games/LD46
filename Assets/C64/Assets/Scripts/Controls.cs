@@ -90,10 +90,10 @@ public class Controls : MonoBehaviour {
         new KeyMapping(KeyCode.P, 41),
         new KeyMapping(KeyCode.L, 42),
         new KeyMapping(KeyCode.Minus, 43),
-        new KeyMapping(KeyCode.Period, 44, "SelectR"),
+       // new KeyMapping(KeyCode.Period, 44, "SelectR"),
         new KeyMapping(KeyCode.Colon, 45),
         new KeyMapping(KeyCode.At, 46),
-        new KeyMapping(KeyCode.Comma, 47, "SelectL"),
+        //new KeyMapping(KeyCode.Comma, 47, "SelectL"),
         new KeyMapping(KeyCode.Asterisk, 49),
         new KeyMapping(KeyCode.Semicolon, 50),
         new KeyMapping(KeyCode.Home, 51),
@@ -104,7 +104,7 @@ public class Controls : MonoBehaviour {
         new KeyMapping(KeyCode.Alpha2, 59),
         new KeyMapping(KeyCode.Space, 60),
         new KeyMapping(KeyCode.Q, 62),
-        new KeyMapping(KeyCode.Escape, 63, "Start")
+       // new KeyMapping(KeyCode.Escape, 63, "Start")
     };
 
     int _joystickFingerId = -1;
@@ -123,57 +123,12 @@ public class Controls : MonoBehaviour {
         if (fire) joystick |= 0x10;
 
         bool hasJoystickTouch = false;
-        fireButton.gameObject.SetActive(false);
-
-        foreach (Touch touch in Input.touches)
-        {
-            if (touch.phase != TouchPhase.Ended || touch.phase != TouchPhase.Canceled)
-            {
-                if (touch.position.x >= Screen.width / 2)
-                {
-                    joystick |= 0x10;
-                    fireButton.gameObject.SetActive(true);
-                    if (touch.phase == TouchPhase.Began)
-                        fireButton.transform.position = Camera.main.ScreenToWorldPoint(touch.position);
-                }
-                else
-                {
-                    if (_joystickFingerId < 0)
-                    {
-                        _joystickFingerId = touch.fingerId;
-                        _joystickFingerStartPos = touch.position;
-                        joystickBase.gameObject.SetActive(true);
-                        joystickBase.transform.position = Camera.main.ScreenToWorldPoint(touch.position);
-                    }
-
-                    if (touch.fingerId == _joystickFingerId)
-                    {
-                        hasJoystickTouch = true;
-                        Vector2 delta = touch.position - _joystickFingerStartPos;
-                        delta.x /= Screen.height;
-                        delta.y /= Screen.height;
-                        const float threshold = 0.04f;
-                        delta.x = Mathf.Clamp(delta.x, -threshold, threshold);
-                        delta.y = Mathf.Clamp(delta.y, -threshold, threshold);
-                        joystickCenter.transform.localPosition = delta * 2f;
-
-                        if (delta.y >= threshold)
-                            joystick |= 0x1;
-                        if (delta.y <= -threshold)
-                            joystick |= 0x2;
-                        if (delta.x <= -threshold)
-                            joystick |= 0x4;
-                        if (delta.x >= threshold)
-                            joystick |= 0x8;
-                    }
-                }
-            }
-        }
-
+        //fireButton.gameObject.SetActive(false);
+        
         if (!hasJoystickTouch)
         {
             _joystickFingerId = -1;
-            joystickBase.gameObject.SetActive(false);
+         //   joystickBase.gameObject.SetActive(false);
         }
 
         joystick ^= 0xff;

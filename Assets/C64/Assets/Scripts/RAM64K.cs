@@ -30,8 +30,8 @@ namespace EMU6502
 {
     public class RAM64K
     {
-        readonly byte[] _ram;
-        readonly byte[] _ioRam;
+        public byte[] _ram;
+        public byte[] _ioRam;
 
         public delegate byte IORead(ushort address, out bool handled);
         public delegate void IOWrite(ushort address, byte value);

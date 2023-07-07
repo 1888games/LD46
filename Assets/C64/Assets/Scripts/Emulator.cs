@@ -22,17 +22,26 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
 using EMU6502;
+using UnityEngine.UI;
 
 public class Emulator : MonoBehaviour 
 {
+
     public string diskImageName = "c64";
 
-    public SpriteRenderer screenRect;
+    //public SpriteRenderer screenRect;
+    public Image screenRect;
     public Controls controls;
 
-    RAM64K _ram;
+    public int SpeedMultiplier = 10;
+    public bool ShowScreen = false;
+    public bool PlayAudio = false;
+
+    public RAM64K _ram;
     MOS6502 _processor;
     VIC2 _vic2;
     SID _sid;
@@ -90,24 +99,29 @@ public class Emulator : MonoBehaviour
         _ram.WriteIO(0xdc00, 0xff);
     }
 
-    void BootGame()
+    async void BootGame()
     {
+        
         _disk = new DiskImage(diskImageName);
 
         // No filename, open first file in directory
         FileHandle bootFile = _disk.OpenFile(null);
         if (bootFile != null)
         {
+            
+            
             ushort loadAddress = (ushort)(_disk.ReadByte(bootFile) + _disk.ReadByte(bootFile) * 256);
             ushort address = loadAddress;
-            while (bootFile.Open)
+           while (bootFile.Open)
                 _ram[address++] = _disk.ReadByte(bootFile);
             // Set end address on zero page
             _ram[0x2d] = (byte)(address & 0xff);
             _ram[0x2e] = (byte)(address >> 8);
             _ram[0xae] = (byte)(address & 0xff);
             _ram[0xaf] = (byte)(address >> 8);
-            // Set RESET vector to CLALL (autostart), otherwise assume sys2061
+
+        
+           //  Set RESET vector to CLALL (autostart), otherwise assume sys2061
             if (loadAddress <= 0x32c)
             {
                 _ram[0xfffc] = _ram[0x32c];
@@ -127,12 +141,12 @@ public class Emulator : MonoBehaviour
       
 
         // Do here to not miss touches
-       // controls.UpdateJoystick();
-       // controls.UpdateKeyboard();
+        controls.UpdateJoystick();
+        controls.UpdateKeyboard();
 
-        if (_textureDirty)
+        if (_textureDirty && ShowScreen)
         {
-            _vic2.UpdateTexture();
+            _vic2.UpdateTexture(ShowScreen);
             _textureDirty = false;
         }
 
@@ -150,35 +164,40 @@ public class Emulator : MonoBehaviour
 
     void FixedUpdate()
     {
-        const int frameCycles = VIC2.CYCLES_PER_LINE * VIC2.NUM_LINES;
 
-       // _ram.WriteIO (0xd021, (byte)colour);
-		
-
-        _processor.Cycles = 0;
-        _audioCycles = 0;
-
-        for (ushort i = 0; i < VIC2.FIRST_VISIBLE_LINE; ++i)
-            ExecuteLine(i, false);
-
-        _vic2.BeginFrame();
-
-        for (ushort i = VIC2.FIRST_VISIBLE_LINE; i < VIC2.FIRST_INVISIBLE_LINE; ++i)
-            ExecuteLine(i, true);
-
-        for (ushort i = VIC2.FIRST_INVISIBLE_LINE; i < VIC2.NUM_LINES; ++i)
-            ExecuteLine(i, false);
-
-        // Render rest of audio until end of frame
-        if (_audioCycles < frameCycles)
+        for (int j = 0; j < SpeedMultiplier; j++)
         {
-            _sid.BufferSamples(frameCycles - _audioCycles);
-            _audioCycles = frameCycles;
+
+
+            const int frameCycles = VIC2.CYCLES_PER_LINE * VIC2.NUM_LINES;
+
+            // _ram.WriteIO (0xd021, (byte)colour);
+
+
+            _processor.Cycles = 0;
+            _audioCycles = 0;
+
+            for (ushort i = 0; i < VIC2.FIRST_VISIBLE_LINE; ++i)
+                ExecuteLine(i, false);
+
+            _vic2.BeginFrame();
+
+            for (ushort i = VIC2.FIRST_VISIBLE_LINE; i < VIC2.FIRST_INVISIBLE_LINE; ++i)
+                ExecuteLine(i, true);
+
+            for (ushort i = VIC2.FIRST_INVISIBLE_LINE; i < VIC2.NUM_LINES; ++i)
+                ExecuteLine(i, false);
+
+            // Render rest of audio until end of frame
+            if (_audioCycles < frameCycles)
+            {
+                if (PlayAudio) _sid.BufferSamples(frameCycles - _audioCycles);
+                _audioCycles = frameCycles;
+            }
+
+            _textureDirty = true;
+           // _ram.Write(0x2000, (byte)(FlashBorder ? 1 : 0));
         }
-
-        _textureDirty = true;
-        _ram.Write (0x2000, (byte)(FlashBorder ? 1 : 0));
-
         //Debug.Log(_sid.samples.Count);
     }
 
@@ -200,6 +219,8 @@ public class Emulator : MonoBehaviour
 
             _sid.samples.RemoveRange(0, j);
         }
+        
+  
     }
 
     void ExecuteLine(ushort lineNum, bool visible)
@@ -211,7 +232,7 @@ public class Emulator : MonoBehaviour
         while (_processor.Cycles < targetCycles && !_processor.Jam)
             _processor.Process();
 
-        if (visible)
+        if (visible && ShowScreen)
             _vic2.RenderNextLine();
     }
 
@@ -242,7 +263,7 @@ public class Emulator : MonoBehaviour
     void HandleIOWrite(ushort address, byte value)
     {
         // Render audio up to the current point on each SID write
-        if (address >= 0xd400 && address <= 0xd418)
+        if (address >= 0xd400 && address <= 0xd418 && PlayAudio)
         {
             _sid.BufferSamples(_processor.Cycles - _audioCycles);
             _audioCycles = _processor.Cycles;

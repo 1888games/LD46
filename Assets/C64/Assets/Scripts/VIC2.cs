@@ -75,14 +75,25 @@ public class VIC2 {
         _ram = ram;
         _pixels = new Color[320 * 200];
 
-        for (int i = 0; i < 320 * 200; ++i)
-            _pixels[i] = _palette[0];
-
+        ClearScreen();
+    
         UpdateTexture();
     }
 
-    public void UpdateTexture()
+    void ClearScreen()
     {
+        for (int i = 0; i < 320 * 200; ++i)
+            _pixels[i] = _palette[0];
+
+    }
+
+    public void UpdateTexture(bool show = true)
+    {
+
+        if (show == false)
+        {
+            ClearScreen();
+        }
         _screenTexture.SetPixels(_pixels);
         _screenTexture.Apply();
     }

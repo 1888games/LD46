@@ -77,12 +77,14 @@ namespace EMU6502
         /// <summary>
         /// Stack Pointer
         /// </summary>
-        public byte SP { get { return _sp; } }
+        public byte SP { get { return _sp; {} } }
         ushort _pc;
         /// <summary>
         /// Program Counter
         /// </summary>
-        public ushort PC { get { return _pc; } }
+        public ushort PC { get { return _pc; }
+            set { _pc = value; }
+        }
 
         // Flags
         bool _carry;    //0x1
